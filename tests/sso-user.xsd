@@ -1,90 +1,95 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
-    <xs:element name="users">
-        <xs:complexType>
-            <xs:sequence>
-                <xs:element ref="user" maxOccurs="unbounded"/>
-            </xs:sequence>
-        </xs:complexType>
-    </xs:element>
-    <xs:element name="user">
-        <xs:complexType>
-            <xs:sequence>
-                <xs:element ref="id" maxOccurs="1"/>
-                <xs:element ref="email" maxOccurs="1"/>
-                <xs:element ref="firstname" maxOccurs="1"/>
-                <xs:element ref="surname" maxOccurs="1"/>
-                <xs:element ref="registration_date" maxOccurs="1"/>
-                <xs:element ref="modified_date" maxOccurs="1"/>
-                <xs:element ref="confirmed" maxOccurs="1"/>
-                <xs:element ref="deleted" maxOccurs="1"/>
-                <xs:element ref="accept_information" maxOccurs="1"/>
-                <xs:element ref="additional" maxOccurs="1"/>
-            </xs:sequence>
-        </xs:complexType>
-    </xs:element>
-    <xs:element name="id" type="xs:integer"/>
-    <xs:element name="email" type="xs:string"/>
-    <xs:element name="firstname" type="xs:string"/>
-    <xs:element name="surname" type="xs:string"/>
-    <xs:element name="registration_date" type="xs:string"/>
-    <xs:element name="modified_date" type="xs:string" nillable="true"/>
-    <xs:element name="confirmed" type="xs:boolean" nillable="true"/>
-    <xs:element name="deleted" type="xs:boolean" nillable="true"/>
-    <xs:element name="accept_information" type="xs:boolean" nillable="true"/>
-    <xs:element name="additional" nillable="true">
-        <xs:complexType>
-            <xs:sequence>
-                <xs:element ref="street" maxOccurs="1"/>
-                <xs:element ref="street_number" maxOccurs="1"/>
-                <xs:element ref="zip_code" maxOccurs="1"/>
-                <xs:element ref="city" maxOccurs="1"/>
-                <xs:element ref="phone" maxOccurs="1"/>
-                <xs:element ref="country" maxOccurs="1"/>
-                <xs:element ref="birthday" maxOccurs="1"/>
-                <xs:element ref="gender" maxOccurs="1"/>
-                <xs:element ref="profession" minOccurs="0" maxOccurs="1"/>
-                <xs:element ref="title" minOccurs="0" maxOccurs="1"/>
-                <xs:element ref="externalAuth" minOccurs="0" maxOccurs="unbounded"/>
-                <xs:element ref="interests" minOccurs="0" maxOccurs="1"/>
-            </xs:sequence>
-        </xs:complexType>
-    </xs:element>
-    <xs:element name="street" type="xs:string" nillable="true"/>
-    <xs:element name="street_number" type="xs:string" nillable="true"/>
-    <xs:element name="zip_code" type="xs:string" nillable="true"/>
-    <xs:element name="city" type="xs:string" nillable="true"/>
-    <xs:element name="phone" type="xs:string" nillable="true"/>
-    <xs:element name="country" type="xs:string" nillable="true"/>
-    <xs:element name="birthday" type="xs:string" nillable="true"/>
-    <xs:element name="gender" type="xs:string" nillable="true"/>
-    <xs:element name="profession" type="xs:string" nillable="true"/>
-    <xs:element name="title" type="xs:string" nillable="true"/>
-    <xs:element name="externalAuth" nillable="true">
-        <xs:complexType>
-            <xs:sequence>
-                <xs:element ref="servicename" minOccurs="1" maxOccurs="1"/>
-                <xs:element ref="jsondata" minOccurs="1" maxOccurs="1"/>
-            </xs:sequence>
-        </xs:complexType>
-    </xs:element>
-    <xs:element name="servicename" type="xs:string"/>
-    <xs:element name="jsondata" type="xs:string" nillable="true"/>
-    <xs:element name="interests" nillable="true">
-        <xs:complexType>
-            <xs:sequence>
-                <xs:element ref="interest" minOccurs="1" maxOccurs="unbounded"/>
-            </xs:sequence>
-        </xs:complexType>
-    </xs:element>
-    <xs:element name="interest" nillable="true">
-        <xs:complexType>
-            <xs:sequence>
-                <xs:element ref="key" minOccurs="1" maxOccurs="1"/>
-                <xs:element ref="value" minOccurs="1" maxOccurs="1"/>
-            </xs:sequence>
-        </xs:complexType>
-    </xs:element>
-    <xs:element name="key" type="xs:string"/>
-    <xs:element name="value" type="xs:string"/>
+
+  <xs:element name="users">
+    <xs:complexType>
+      <xs:sequence>
+	<xs:element ref="user" maxOccurs="unbounded" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="user">
+    <xs:complexType>
+      <xs:sequence>
+	<xs:element ref="id" maxOccurs="1" />
+	<xs:element ref="email" maxOccurs="1" />
+	<xs:element ref="firstname" maxOccurs="1" />
+	<xs:element ref="surname" maxOccurs="1" />
+	<xs:element ref="registration_date" maxOccurs="1" />
+	<xs:element ref="modified_date" maxOccurs="1" />
+	<xs:element ref="confirmed" maxOccurs="1" />
+	<xs:element ref="deleted" maxOccurs="1" />
+	<xs:element ref="accept_information" maxOccurs="1" />
+	<xs:element ref="additional" maxOccurs="1" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="id" type="xs:integer" />
+  <xs:element name="email" type="xs:string" />
+  <xs:element name="firstname" type="xs:string" />
+  <xs:element name="surname" type="xs:string" />
+  <xs:element name="registration_date" type="xs:string" nillable="true"/>
+  <xs:element name="modified_date" type="xs:string"  nillable="true" />
+  <xs:element name="confirmed" type="xs:boolean"  nillable="true"/>
+  <xs:element name="deleted" type="xs:boolean"   nillable="true"/>
+  <xs:element name="accept_information" type="xs:boolean"  nillable="true"/>
+
+  <xs:element name="additional" nillable="true">
+    <xs:complexType>
+      <xs:sequence>
+	<xs:element ref="street" maxOccurs="1" />
+	<xs:element ref="street_number" maxOccurs="1" />
+	<xs:element ref="zip_code" maxOccurs="1" />
+	<xs:element ref="city" maxOccurs="1" />
+	<xs:element ref="phone" maxOccurs="1" />
+	<xs:element ref="country" maxOccurs="1" />
+	<xs:element ref="birthday" maxOccurs="1" />
+	<xs:element ref="gender" maxOccurs="1" />
+	<xs:element ref="profession" minOccurs="0" maxOccurs="1" />
+	<xs:element ref="title" minOccurs="0" maxOccurs="1" />
+	<xs:element ref="externalAuth" minOccurs="0" maxOccurs="unbounded" />
+	<xs:element ref="interests" minOccurs="0" maxOccurs="1" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="street" type="xs:string" nillable="true" />
+  <xs:element name="street_number" type="xs:string" nillable="true" />
+  <xs:element name="zip_code" type="xs:string" nillable="true" />
+  <xs:element name="city" type="xs:string" nillable="true" />
+  <xs:element name="phone" type="xs:string" nillable="true" />
+  <xs:element name="country" type="xs:string" nillable="true" />
+  <xs:element name="birthday" type="xs:string" nillable="true" />
+  <xs:element name="gender" type="xs:string" nillable="true" />
+  <xs:element name="profession" type="xs:string" nillable="true" />
+  <xs:element name="title" type="xs:string" nillable="true" />
+
+  <xs:element name="externalAuth" nillable="true">
+    <xs:complexType>
+      <xs:sequence>
+	<xs:element ref="servicename" minOccurs="1" maxOccurs="1"/>
+	<xs:element ref="jsondata" minOccurs="1" maxOccurs="1"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="servicename" type="xs:string" />
+  <xs:element name="jsondata" type="xs:string" nillable="true"/>
+
+  <xs:element name="interests" nillable="true">
+    <xs:complexType>
+      <xs:sequence>
+	<xs:element ref="interest" minOccurs="1" maxOccurs="unbounded"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="interest" nillable="true">
+    <xs:complexType>
+      <xs:sequence>
+	<xs:element ref="key" minOccurs="1" maxOccurs="1" />
+	<xs:element ref="value" minOccurs="1" maxOccurs="1" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="key" type="xs:string"  />
+  <xs:element name="value" type="xs:string"  />
 </xs:schema>

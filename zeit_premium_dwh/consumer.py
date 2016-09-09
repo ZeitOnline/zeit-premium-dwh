@@ -43,6 +43,7 @@ class XmlProducer(object):
         pass
 
     def build(self, order):
+        nil = {'{http://www.w3.org/2001/XMLSchema-instance}nil': 'true'}
         interests = [
             E.interest(
                 E.key('campaign_id'),
@@ -89,11 +90,11 @@ class XmlProducer(object):
                 E.email('premium-user'),
                 E.firstname('default'),
                 E.surname('default'),
-                E.registration_date('default'),
-                E.modified_date('default'),
-                E.confirmed(**{'{http://www.w3.org/2001/XMLSchema-instance}nil': 'true'}),
-                E.deleted(**{'{http://www.w3.org/2001/XMLSchema-instance}nil': 'true'}),
-                E.accept_information(**{'{http://www.w3.org/2001/XMLSchema-instance}nil': 'true'}),
+                E.registration_date(**nil),
+                E.modified_date(**nil),
+                E.confirmed(**nil),
+                E.deleted(**nil),
+                E.accept_information(**nil),
                 E.additional(
                     E.street(),
                     E.street_number(),
