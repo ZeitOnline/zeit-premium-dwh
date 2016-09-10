@@ -113,6 +113,13 @@ class XmlProducer(object):
         return users
 
 
+class HttpError(Exception):
+
+    def __init__(self, url, response):
+        super(HttpError, self).__init__(
+            'Received status {} from {}'.format(response.code, url))
+
+
 def sleep(secs):
     d = defer.Deferred()
     reactor.callLater(secs, d.callback, None)
@@ -149,14 +156,16 @@ def read(queue_object):
             config_parser.get('destination', 'url'),
             order['customer_id'])
         try:
-            yield agent.request(
+            response = yield agent.request(
                 'PUT',
                 url,
                 Headers({'content-type': ['text/xml']}),
                 XmlProducer(order))
+            if response.code >= 400:
+                raise HttpError(url, response)
         except:
             log.err()
-            yield sleep(3)
+            yield sleep(60)
             yield ch.basic_nack(delivery_tag=method.delivery_tag)
         else:
             yield ch.basic_ack(delivery_tag=method.delivery_tag)
