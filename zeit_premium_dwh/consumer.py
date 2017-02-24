@@ -18,7 +18,7 @@ defaults = {
     'host': 'premium-backend01.zeit.de',
     'port': 5672,
     'virtual_host': '/',
-    'url': 'https://crm-receiver.zeit.de/premium/kunden'
+    'url': 'https://crm-receiver.zeit.de/premium/bestellungen'
 }
 config_parser = SafeConfigParser(defaults)
 config_parser.read(['/etc/zeit-premium-dwh/config.ini'])
@@ -154,7 +154,7 @@ def read(queue_object):
         order = json.loads(body)
         url = '{}/{}'.format(
             config_parser.get('destination', 'url'),
-            order['customer_id'])
+            order['id'])
         try:
             response = yield agent.request(
                 'PUT',
