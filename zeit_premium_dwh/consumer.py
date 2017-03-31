@@ -163,6 +163,9 @@ def read(queue_object):
                 XmlProducer(order))
             if response.code >= 400:
                 raise HttpError(url, response)
+        except TypeError:
+            log.err()
+            yield ch.basic_nack(delivery_tag=method.delivery_tag, requeue=False)
         except:
             log.err()
             yield sleep(60)
