@@ -12,7 +12,7 @@ Vagrant.configure(2) do |config|
 
   # Every Vagrant development environment requires a box. You can search for
   # boxes at https://atlas.hashicorp.com/search.
-  config.vm.box = "ubuntu/trusty64"
+  config.vm.box = "ubuntu/xenial64"
 
   # Disable automatic box update checking. If you disable this, then
   # boxes will only be checked for updates when the user runs
@@ -37,7 +37,7 @@ Vagrant.configure(2) do |config|
   # the path on the host to the actual folder. The second argument is
   # the path on the guest to mount the folder. And the optional third
   # argument is a set of non-required options.
-  config.vm.synced_folder ".", "/home/vagrant/zeit-premium-dwh"
+  config.vm.synced_folder ".", "/home/ubuntu/zeit-premium-dwh"
 
   # Provider-specific configuration so you can fine-tune various
   # backing providers for Vagrant. These expose provider-specific options.
@@ -47,7 +47,7 @@ Vagrant.configure(2) do |config|
   end
 
   config.vm.provider "lxc" do |vb, override|
-    override.vm.box = "fgrehm/trusty64-lxc"
+    override.vm.box = "st01tkh/xenial64-lxc"
   end
 
   # Enable provisioning with a shell script. Additional provisioners such as
