@@ -131,7 +131,7 @@ def run(connection):
 
     channel = yield connection.channel()
     exchange = yield channel.exchange_declare(
-        exchange='premium', type='topic', durable=True)
+        exchange='premium', exchange_type='topic', durable=True)
     queue = yield channel.queue_declare(
         queue='orders', auto_delete=False, exclusive=False, durable=True)
 
@@ -193,9 +193,6 @@ class PikaService(service.Service):
             host=config_parser.get('broker', 'host'),
             port=config_parser.getint('broker', 'port'),
             virtual_host=config_parser.get('broker', 'virtual_host'))
-        self.factory = PikaFactory(parameters)
+        factory = PikaFactory(parameters)
         IReactorCore(reactor).connectTCP(
-            parameters.host, parameters.port, self.factory)
-
-    def stopService(self):
-        return self.factory.connection.close()
+            parameters.host, parameters.port, factory)
