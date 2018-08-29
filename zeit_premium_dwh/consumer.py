@@ -1,4 +1,4 @@
-from ConfigParser import SafeConfigParser
+from configparser import ConfigParser
 from lxml import etree
 from lxml.builder import E
 from pika.adapters import twisted_connection
@@ -9,24 +9,26 @@ from twisted.python import log
 from twisted.web.client import Agent
 from twisted.web.http_headers import Headers
 from twisted.web.iweb import IBodyProducer
-from zope.interface import implements
+from zope.interface import implementer
 import json
 import pika
 
 
-defaults = {
-    'host': 'premium-backend01.zeit.de',
-    'port': 5672,
-    'virtual_host': '/',
-    'url': 'https://crm-receiver.zeit.de/premium/bestellungen'
-}
-config_parser = SafeConfigParser(defaults)
+config_parser = ConfigParser()
+config_parser.read_dict({
+    'broker': {
+        'host': 'premium-backend01.zeit.de',
+        'port': 5672,
+        'virtual_host': '/',
+        'url': 'https://crm-receiver.zeit.de/premium/bestellungen'
+    }
+})
 config_parser.read(['/etc/zeit-premium-dwh/config.ini'])
 agent = Agent(reactor)
 
 
+@implementer(IBodyProducer)
 class XmlProducer(object):
-    implements(IBodyProducer)
 
     def __init__(self, order):
         self.body = etree.tostring(self.build(order))

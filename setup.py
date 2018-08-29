@@ -4,7 +4,7 @@ from setuptools import setup
 
 setup(
     name='zeit-premium-dwh',
-    version='0.4.0',
+    version='0.5.0',
     description='Twisted app for relaying Premium data to CRM',
     license='BSD',
     author='Stefan Freudenberg',
@@ -20,5 +20,10 @@ setup(
         'lxml>=2.3',
         'pika>=0.10',
         'twisted>=12.0',
-    ]
+    ],
+    extras_require = {
+        'testing': [
+            'pytest'
+        ]
+    }
 )

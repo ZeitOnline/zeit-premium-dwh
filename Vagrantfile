@@ -60,11 +60,10 @@ Vagrant.configure(2) do |config|
       git \
       ipython \
       libxml2-utils \
-      python-dev \
-      python-lxml \
-      python-pip \
-      python-twisted
-    pip install "pytest>=2.6"
-    pip install -e /vagrant
+      python3-dev \
+      python3-lxml \
+      python3-pip \
+      python3-twisted
+    pip3 install -e /vagrant[testing]
   SHELL
 end
