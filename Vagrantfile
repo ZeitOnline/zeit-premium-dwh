@@ -58,7 +58,7 @@ Vagrant.configure(2) do |config|
     apt-get -y update
     apt-get -y install \
       git \
-      ipython \
+      ipython3 \
       libxml2-utils \
       python3-dev \
       python3-lxml \
