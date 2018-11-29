@@ -17,9 +17,11 @@ import pika
 config_parser = ConfigParser()
 config_parser.read_dict({
     'broker': {
-        'host': 'premium-backend01.zeit.de',
+        'host': 'premium-backend.zeit.de',
         'port': 5672,
-        'virtual_host': '/',
+        'virtual_host': '/'
+    },
+    'destination': {
         'url': 'https://crm-receiver.zeit.de/premium/bestellungen'
     }
 })
