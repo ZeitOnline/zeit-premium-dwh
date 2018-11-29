@@ -162,7 +162,7 @@ def read(queue_object):
         try:
             response = yield agent.request(
                 'PUT',
-                url,
+                url.encode('utf-8'),
                 Headers({'content-type': ['text/xml']}),
                 XmlProducer(order))
             if response.code >= 400:
