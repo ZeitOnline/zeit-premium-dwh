@@ -155,7 +155,7 @@ def read(queue_object):
     ch, method, properties, body = yield queue_object.get()
 
     if body:
-        order = json.loads(body)
+        order = json.loads(body.decode('utf-8'))
         url = '{}/{}'.format(
             config_parser.get('destination', 'url'),
             order['id'])
