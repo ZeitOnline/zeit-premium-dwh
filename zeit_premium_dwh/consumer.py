@@ -161,7 +161,7 @@ def read(queue_object):
             order['id'])
         try:
             response = yield agent.request(
-                'PUT',
+                b'PUT',
                 url.encode('utf-8'),
                 Headers({'content-type': ['text/xml']}),
                 XmlProducer(order))
