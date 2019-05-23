@@ -51,7 +51,7 @@ class XmlProducer(object):
         interests = [
             E.interest(
                 E.key('campaign_id'),
-                E.value(order['campaign_id'])
+                E.value(str(order['campaign_id']))
             ),
             E.interest(
                 E.key('state'),
@@ -59,7 +59,7 @@ class XmlProducer(object):
             ),
             E.interest(
                 E.key('gift'),
-                E.value(order['gift'])
+                E.value(str(order['gift']))
             )
         ]
         if order.get('created'):
@@ -80,17 +80,17 @@ class XmlProducer(object):
         if order.get('add_on'):
             interests.append(E.interest(
                 E.key('add_on'),
-                E.value(order['add_on'])
+                E.value(str(order['add_on']))
             ))
         if order.get('subscription_id'):
             interests.append(E.interest(
                 E.key('subscription_id'),
-                E.value(order['subscription_id'])
+                E.value(str(order['subscription_id']))
             ))
 
         users = E.users(
             E.user(
-                E.id(order['customer_id']),
+                E.id(str(order['customer_id'])),
                 E.email('premium-user'),
                 E.firstname('default'),
                 E.surname('default'),

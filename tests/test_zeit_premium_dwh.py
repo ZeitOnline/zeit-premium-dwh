@@ -14,49 +14,49 @@ def schema():
 @pytest.mark.parametrize('order,expected', [
     (
         {
-            'id': '523456',
-            'campaign_id': '800144',
-            'customer_id': '2234578',
+            'id': 523456,
+            'campaign_id': 800144,
+            'customer_id': 2234578,
             'subscription_id': None,
             'state': 'pending',
             'created': '2016-08-05 15:24:00',
             'last_modified': None,
             'agent_id': None,
             'comment': None,
-            'addon': '1008009',
-            'gift': 'false'
+            'addon': 1008009,
+            'gift': False
         },
         True
     ),
     (
         {
-            'id': '523456',
-            'campaign_id': '800144',
-            'customer_id': '2234578',
+            'id': 523456,
+            'campaign_id': 800144,
+            'customer_id': 2234578,
             'subscription_id': None,
             'state': 'completed',
             'created': '2016-08-05 15:24:00',
             'last_modified': '2016-08-06 08:18:00',
             'agent_id': None,
             'comment': None,
-            'addon': '1008009',
-            'gift': 'false',
+            'addon': 1008009,
+            'gift': False,
         },
         True
     ),
     (
         {
-            'id': '523456',
-            'campaign_id': '800144',
-            'customer_id': '2234578',
-            'subscription_id': '2871000000',
+            'id': 523456,
+            'campaign_id': 800144,
+            'customer_id': 2234578,
+            'subscription_id': 2871000000,
             'state': 'confirmed',
             'created': '2016-08-05 15:24:00',
             'last_modified': '2016-08-06 08:23:00',
             'agent_id': None,
             'comment': None,
-            'addon': '1008009',
-            'gift': 'false',
+            'addon': 1008009,
+            'gift': False,
         },
         True
     ),
