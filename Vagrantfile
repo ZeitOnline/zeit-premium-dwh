@@ -12,7 +12,7 @@ Vagrant.configure(2) do |config|
 
   # Every Vagrant development environment requires a box. You can search for
   # boxes at https://atlas.hashicorp.com/search.
-  config.vm.box = "ubuntu/xenial64"
+  config.vm.box = "ubuntu/bionic64"
 
   # Disable automatic box update checking. If you disable this, then
   # boxes will only be checked for updates when the user runs
@@ -47,7 +47,7 @@ Vagrant.configure(2) do |config|
   end
 
   config.vm.provider "lxc" do |vb, override|
-    override.vm.box = "st01tkh/xenial64-lxc"
+    override.vm.box = "emptybox/ubuntu-bionic-amd64-lxc"
   end
 
   # Enable provisioning with a shell script. Additional provisioners such as
