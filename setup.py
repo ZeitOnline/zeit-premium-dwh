@@ -4,7 +4,7 @@ from setuptools import setup
 
 setup(
     name='zeit-premium-dwh',
-    version='0.6.0',
+    version='0.6.1',
     description='Twisted app for relaying Premium data to CRM',
     license='BSD',
     author='Stefan Freudenberg',
@@ -18,7 +18,7 @@ setup(
     include_package_data=True,
     install_requires=[
         'lxml>=2.3',
-        'pika>=0.10',
+        'pika>=0.10,<1',
         'twisted>=12.0',
     ],
     extras_require = {
