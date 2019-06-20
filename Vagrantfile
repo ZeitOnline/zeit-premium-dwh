@@ -48,6 +48,7 @@ Vagrant.configure(2) do |config|
 
   config.vm.provider "lxc" do |vb, override|
     override.vm.box = "emptybox/ubuntu-bionic-amd64-lxc"
+    override.vm.synced_folder ".", "/vagrant", type: "rsync"
   end
 
   # Enable provisioning with a shell script. Additional provisioners such as
