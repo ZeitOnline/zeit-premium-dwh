@@ -122,6 +122,7 @@ class HttpError(Exception):
     def __init__(self, url, response):
         super(HttpError, self).__init__(
             'Received status {} from {}'.format(response.code, url))
+        self.response = response
 
 
 def sleep(secs):
@@ -170,6 +171,11 @@ def read(queue_object):
         except TypeError:
             log.err()
             yield ch.basic_nack(delivery_tag=method.delivery_tag, requeue=False)
+        except HttpError as e:
+            log.err()
+            requeue = True if e.response.code >= 500 else False
+            yield ch.basic_nack(
+                delivery_tag=method.delivery_tag, requeue=requeue)
         except:
             log.err()
             yield sleep(60)
