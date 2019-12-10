@@ -1,6 +1,7 @@
 #!/bin/sh -xe
 
-vagrant up --provider lxc --provision
+. /opt/credentials/govc/credentials.env.sh
+vagrant up --provider vsphere --provision
 
 trap "vagrant destroy --force" EXIT
 

@@ -46,9 +46,19 @@ Vagrant.configure(2) do |config|
     override.vm.network "private_network", ip: "192.168.34.13"
   end
 
-  config.vm.provider "lxc" do |vb, override|
-    override.vm.box = "emptybox/ubuntu-bionic-amd64-lxc"
+  config.vm.provider "vsphere" do |v, override|
+    override.vm.allowed_synced_folder_types = ["rsync"]
+    override.vm.box = "vsphere"
     override.vm.synced_folder ".", "/vagrant", type: "rsync"
+    v.compute_resource_name = "Zeit-DCC"
+    v.data_center_name = ENV["GOVC_DATACENTER"]
+    v.data_store_name = "Vmfs_ZON_Staging"
+    v.host = "srv-vcenter.zeit.de"
+    v.insecure = ENV["GOVC_INSECURE"]
+    v.password = ENV["GOVC_PASSWORD"]
+    v.template_name = "ZON Templates/ubuntu18-premium-services-template"
+    v.user = ENV["GOVC_USERNAME"]
+    v.vm_base_path = "ZON Templates"
   end
 
   # Enable provisioning with a shell script. Additional provisioners such as
