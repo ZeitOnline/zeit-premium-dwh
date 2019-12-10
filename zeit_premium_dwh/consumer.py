@@ -84,13 +84,23 @@ class XmlProducer(object):
             ))
         if order.get('subscription_id'):
             interests.append(E.interest(
-                E.key('subscription_id'),
+                E.key('dpv_order_id'),
                 E.value(str(order['subscription_id']))
+            ))
+        if order.get('customer_id'):
+            interests.append(E.interest(
+                E.key('sso_id'),
+                E.value(str(order['customer_id']))
+            ))
+        if order.get('icode'):
+            interests.append(E.interest(
+                E.key('icode'),
+                E.value(str(order['icode']))
             ))
 
         users = E.users(
             E.user(
-                E.id(str(order['customer_id'])),
+                E.id(str(order['id'])),
                 E.email('premium-user'),
                 E.firstname('default'),
                 E.surname('default'),
