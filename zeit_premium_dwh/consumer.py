@@ -97,6 +97,11 @@ class XmlProducer(object):
                 E.key('icode'),
                 E.value(str(order['icode']))
             ))
+        if order.get('external_id'):
+            interests.append(E.interest(
+                E.key('external_id'),
+                E.value(str(order['external_id']))
+            ))
 
         users = E.users(
             E.user(
